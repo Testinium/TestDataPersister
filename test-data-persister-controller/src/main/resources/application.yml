@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test-data-persister
+
+endpoints:
+  beans:
+    id: springbeans
+    sensitive: false
+    enabled: true
