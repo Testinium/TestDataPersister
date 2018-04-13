@@ -13,6 +13,4 @@
 
 # Maven
 log/
-target/test-data-persister/
-.idea/
-.idea/
+target/
