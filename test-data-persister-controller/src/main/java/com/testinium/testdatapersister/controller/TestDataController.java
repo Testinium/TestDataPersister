@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author erdoganonur on 11.04.2018
  */
 @RestController
-@RequestMapping("/api/test/data")
+@RequestMapping("/data")
 public class TestDataController {
 
     @Autowired
@@ -23,15 +23,15 @@ public class TestDataController {
         return testDataService.getAll(pageable);
     }
 
-    @RequestMapping(value = "/{containder}", method = RequestMethod.GET)
-    private Page<TestData> getAllByContainer(@PathVariable String container, Pageable pageable) {
-        return testDataService.getAllByContainer(container, pageable);
+    @RequestMapping(value = "/{bucket}", method = RequestMethod.GET)
+    private Page<TestData> getAllByBucket(@PathVariable String bucket, Pageable pageable) {
+        return testDataService.getAllByBucket(bucket, pageable);
     }
 
-    @RequestMapping(value = "/{container}", method = RequestMethod.PUT)
-    private TestData putForContainer(@PathVariable String container, @RequestBody TestData testData) {
+    @RequestMapping(value = "/{bucket}", method = RequestMethod.PUT)
+    private TestData putForBucket(@PathVariable String bucket, @RequestBody TestData testData) {
 
-        System.out.println(container);
-        return testDataService.putForContainer(testData, container);
+        System.out.println(bucket);
+        return testDataService.putForBucket(testData, bucket);
     }
 }

@@ -10,5 +10,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface TestDataRepo extends MongoRepository<TestData, Long> {
 
-    Page<TestData> findByContainer(String container, Pageable pageable);
+    Page<TestData> findByBucket(String bucket, Pageable pageable);
 }

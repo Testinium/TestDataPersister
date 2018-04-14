@@ -41,37 +41,37 @@ public class TestDataService {
     }
 
     /**
-     * @param container
+     * @param bucket
      * @param page
      * @param pageSize
      * @return
      */
-    public List<TestData> getAllByContainer(String container, int page, int pageSize) {
+    public List<TestData> getAllByBucket(String bucket, int page, int pageSize) {
 
         Pageable pageable = new PageRequest(page, pageSize);
-        Page<TestData> resultPage = getAllByContainer(container, pageable);
+        Page<TestData> resultPage = getAllByBucket(bucket, pageable);
         return resultPage.getContent();
     }
 
     /**
-     * @param container
+     * @param bucket
      * @param pageable
      * @return
      */
-    public Page<TestData> getAllByContainer(String container, Pageable pageable) {
+    public Page<TestData> getAllByBucket(String bucket, Pageable pageable) {
 
-        Page<TestData> resultPage = testDataRepo.findByContainer(container, pageable);
+        Page<TestData> resultPage = testDataRepo.findByBucket(bucket, pageable);
         return resultPage;
     }
 
     /**
      * @param testData
-     * @param container
+     * @param bucket
      * @return
      */
-    public TestData putForContainer(TestData testData, String container) {
+    public TestData putForBucket(TestData testData, String bucket) {
 
-        testData.setContainer(container);
+        testData.setBucket(bucket);
         return testDataRepo.save(testData);
     }
 

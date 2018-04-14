@@ -11,7 +11,7 @@ public class TestData {
     private String key;
     private String value;
     private String scope;
-    private String container;
+    private String bucket;
 
     public String getKey() {
         return this.key;
@@ -37,11 +37,11 @@ public class TestData {
         this.scope = scope;
     }
 
-    public String getContainer() {
-        return this.container;
+    public String getBucket() {
+        return this.bucket;
     }
 
-    public void setContainer(String container) {
-        this.container = container;
+    public void setBucket(String bucket) {
+        this.bucket = bucket;
     }
 }
