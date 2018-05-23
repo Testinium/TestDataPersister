@@ -1,0 +1,26 @@
+version: '3.0'
+services:
+  api:
+    image: testinium/test-data-persister-api:lastest
+    container_name: api
+    build:
+      context: test-data-persister-controller
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  mongo:
+      image: mongo:3.4.1
+      ports:
+        - 27017:27017
+      volumes:
+        - /data/db
+

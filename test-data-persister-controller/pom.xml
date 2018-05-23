@@ -11,6 +11,10 @@
 
     <artifactId>test-data-persister-controller</artifactId>
 
+    <properties>
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -41,6 +45,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
         <!--SPRING DEPENDENCIES-->
 
         <dependency>
@@ -54,5 +64,58 @@
             <version>2.7.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.6</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${snippetsDirectory}</snippets>
+                            </attributes>
+                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+                            <outputDirectory>target/generated-docs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.testinium.testdatapersister.TestDataPersisterApiApp</mainClass>
+                    <executable>true</executable>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

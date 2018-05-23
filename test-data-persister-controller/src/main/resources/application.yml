@@ -10,3 +10,8 @@ endpoints:
     id: springbeans
     sensitive: false
     enabled: true
+
+
+management:
+  security:
+    enabled: false
