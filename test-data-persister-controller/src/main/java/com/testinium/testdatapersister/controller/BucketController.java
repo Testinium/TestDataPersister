@@ -19,7 +19,7 @@ public class BucketController {
     @Autowired
     private BucketService bucketService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     private List<String> getAll() {
         return bucketService.getAllBuckets();
     }

@@ -18,7 +18,7 @@ public class TestDataController {
     private TestDataService testDataService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     private Page<TestData> getAll(Pageable pageable) {
         return testDataService.getAll(pageable);
     }

@@ -15,3 +15,10 @@ endpoints:
 management:
   security:
     enabled: false
+
+
+
+security:
+  user:
+    name: admin
+    password: admin
