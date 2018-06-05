@@ -12,9 +12,8 @@
     <artifactId>test-data-persister-controller</artifactId>
     <version>${parent.version}</version>
 
-    <properties>
-        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
-    </properties>
+    <name>Testinum - Test Data Persister - CONTROLLER</name>
+    <url>http://www.testinium.com</url>
 
     <dependencies>
 

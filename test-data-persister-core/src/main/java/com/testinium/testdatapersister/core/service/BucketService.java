@@ -1,9 +1,9 @@
 package com.testinium.testdatapersister.core.service;
 
-import com.mongodb.DBObject;
-import com.testinium.testdatapersister.core.repository.TestDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -22,8 +22,19 @@ public class BucketService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<String> getAllBuckets() {
+    public Page<String> getAllBuckets(Pageable pageable) {
         //TODO Should be implemented pageable.
-        return mongoTemplate.getCollection("testData").distinct("bucket");
+
+
+        Query query = new Query();
+        query.with(pageable);
+
+        List bucketList = mongoTemplate.getCollection("testData").distinct("bucket", query.getQueryObject());
+
+        Page<String> page = new PageImpl<>(bucketList,
+                new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort()),
+                bucketList.size());
+
+        return page;
     }
 }

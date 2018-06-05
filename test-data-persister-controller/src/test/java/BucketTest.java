@@ -31,13 +31,13 @@ public class BucketTest {
     @Test
     public void bucketListTest(){
 
-//        Pageable pageable = new PageRequest(1, 100);
-//
+        Pageable pageable = new PageRequest(1, 100);
+
 //        Page<String> bucketPage = bucketService.getAllBuckets("new-bucket", pageable);
-//
+
 //        List<String> bucketList = bucketPage.getContent();
 
-        List<String> bucketList = bucketService.getAllBuckets();
+        Page<String> bucketList = bucketService.getAllBuckets(pageable);
 
         for(String s : bucketList){
             System.out.println(s);

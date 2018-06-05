@@ -12,11 +12,13 @@
     <artifactId>test-data-persister-core</artifactId>
     <version>${parent.version}</version>
 
+    <name>Testinum - Test Data Persister - CORE</name>
+    <url>http://www.testinium.com</url>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
     </dependencies>
-
 </project>
